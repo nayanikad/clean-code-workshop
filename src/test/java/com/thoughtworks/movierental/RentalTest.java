@@ -39,4 +39,40 @@ public class RentalTest {
 
         Assert.assertEquals(0.0, actualAmount, 0.0);
     }
+
+    @Test
+    public void shouldReturnFrequentRenterPointsForChildrenMovie() {
+        Rental rental = new Rental(new Movie("Harry Potter", Movie.CHILDRENS), 2);
+
+        int frequentRenterPoints = rental.frequentRenterPoints();
+
+        Assert.assertEquals(1, frequentRenterPoints);
+    }
+
+    @Test
+    public void shouldReturnFrequentRenterPointsForRegularMovie() {
+        Rental rental = new Rental(new Movie("Harry Potter", Movie.REGULAR), 2);
+
+        int frequentRenterPoints = rental.frequentRenterPoints();
+
+        Assert.assertEquals(1, frequentRenterPoints);
+    }
+
+    @Test
+    public void shouldReturnFrequentRenterPointsForNewReleaseMovie() {
+        Rental rental = new Rental(new Movie("Harry Potter", Movie.NEW_RELEASE), 3);
+
+        int frequentRenterPoints = rental.frequentRenterPoints();
+
+        Assert.assertEquals(2, frequentRenterPoints);
+    }
+
+    @Test
+    public void shouldReturnFrequentRenterPointsForAnyOtherMovie() {
+        Rental rental = new Rental(new Movie("Harry Potter", 7), 3);
+
+        int frequentRenterPoints = rental.frequentRenterPoints();
+
+        Assert.assertEquals(1, frequentRenterPoints);
+    }
 }

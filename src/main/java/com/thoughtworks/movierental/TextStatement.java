@@ -5,15 +5,11 @@ import java.util.List;
 class TextStatement {
 
     private final String customerName;
-    private final List<Rental> rentals;
-    private final double totalAmount;
-    private final int totalFrequentRenterPoints;
+    private final Rentals rentals;
 
-    public TextStatement(String customerName, List<Rental> rentals, double totalAmount, int totalFrequentRenterPoints) {
+    public TextStatement(String customerName, Rentals rentals) {
         this.customerName = customerName;
         this.rentals = rentals;
-        this.totalAmount = totalAmount;
-        this.totalFrequentRenterPoints = totalFrequentRenterPoints;
     }
 
     public String text() {
@@ -24,8 +20,8 @@ class TextStatement {
                     rental.amount() + "\n";
         }
         //add footer lines result
-        result += "Amount owed is " + totalAmount + "\n";
-        result += "You earned " + totalFrequentRenterPoints
+        result += "Amount owed is " + rentals.totalAmount() + "\n";
+        result += "You earned " + rentals.totalFrequentRenterPoints()
                 + " frequent renter points";
         return result;
     }

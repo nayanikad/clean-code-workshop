@@ -6,4 +6,9 @@ public class NewReleaseMovieType implements MovieType{
         amount = daysRented * 3;
         return amount;
     }
+
+    @Override
+    public int frequentRenterPointsFor(int daysRented) {
+        return daysRented > 1 ? 2 : 1;
+    }
 }

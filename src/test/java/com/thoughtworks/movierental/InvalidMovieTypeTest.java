@@ -10,4 +10,11 @@ public class InvalidMovieTypeTest {
 
         Assert.assertEquals(0.0, actualAmount, 0.0);
     }
+
+    @Test
+    public void shouldReturnFrequentRenterPoints() {
+        int actualFrequentRenterPoints = new InvalidMovieType().frequentRenterPointsFor(2);
+
+        Assert.assertEquals(1, actualFrequentRenterPoints);
+    }
 }

@@ -5,4 +5,9 @@ public class InvalidMovieType implements MovieType {
     public double amountFor(int daysRented) {
         return 0;
     }
+
+    @Override
+    public int frequentRenterPointsFor(int daysRented) {
+        return 1;
+    }
 }

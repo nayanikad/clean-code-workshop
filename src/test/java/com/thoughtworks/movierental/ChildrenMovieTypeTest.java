@@ -10,4 +10,11 @@ public class ChildrenMovieTypeTest {
 
         Assert.assertEquals(1.5, actualAmount, 0.0);
     }
+
+    @Test
+    public void shouldReturnFrequentRenterPoints() {
+        int actualFrequentRenterPoints = new ChildrenMovieType().frequentRenterPointsFor(2);
+
+        Assert.assertEquals(1, actualFrequentRenterPoints);
+    }
 }

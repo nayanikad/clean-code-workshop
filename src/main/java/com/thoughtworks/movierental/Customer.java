@@ -24,21 +24,7 @@ public class Customer {
     }
 
     public String htmlStatement() {
-        String result = "<h3>Rental Record for " + getName() + "</h3><br/>";
-        result += "<p>";
-
-        for (Rental rental : rentals) {
-            //show figures for this rental
-            result += rental.getMovie().getTitle() + ": <b>" +
-                    rental.amount() + "</b><br/>";
-        }
-
-        result += "</p>";
-        //add footer lines result
-        result += "<p>Amount owed is <b>" + totalAmount() + "</b></p>";
-        result += "<p>You earned <b>" + totalFrequentRenterPoints()
-                + "</b> frequent renter points</p>";
-        return result;
+        return new HtmlStatement(getName(), Customer.this.rentals, totalAmount(), totalFrequentRenterPoints()).html();
     }
 
     private int totalFrequentRenterPoints() {

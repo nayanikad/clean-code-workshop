@@ -29,19 +29,34 @@ public class Movie {
         double amount = 0;
         switch (priceCode) {
             case REGULAR:
-                amount += 2;
-                if (daysRented > 2)
-                    amount += (daysRented - 2) * 1.5;
-                break;
+                return regularMovieAmountFor(daysRented);
             case NEW_RELEASE:
-                amount += daysRented * 3;
-                break;
+                return newReleaseMovieAmountFor(daysRented);
             case CHILDRENS:
-                amount += 1.5;
-                if (daysRented > 3)
-                    amount += (daysRented - 3) * 1.5;
-                break;
+                return childrenMovieAmountFor(daysRented);
         }
+        return amount;
+    }
+
+    private double childrenMovieAmountFor(int daysRented) {
+        double amount;
+        amount = 1.5;
+        if (daysRented > 3)
+            amount += (daysRented - 3) * 1.5;
+        return amount;
+    }
+
+    private double newReleaseMovieAmountFor(int daysRented) {
+        double amount;
+        amount = daysRented * 3;
+        return amount;
+    }
+
+    private double regularMovieAmountFor(int daysRented) {
+        double amount;
+        amount = 2;
+        if (daysRented > 2)
+            amount += (daysRented - 2) * 1.5;
         return amount;
     }
 

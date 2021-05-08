@@ -9,9 +9,13 @@ public class Movie {
     private String title;
     MovieType movieType;
 
-    public Movie(String title, int priceCode) {
+    public Movie(String title, MovieType movieType) {
         this.title = title;
-        this.movieType = movieTypeFrom(priceCode);
+        this.movieType = movieType;
+    }
+
+    public Movie(String title, int priceCode) {
+        this(title, movieTypeFrom(priceCode));
     }
 
     public int getPriceCode() {
@@ -30,7 +34,7 @@ public class Movie {
         return movieType.amountFor(daysRented);
     }
 
-    private MovieType movieTypeFrom(int priceCode) {
+    private static MovieType movieTypeFrom(int priceCode) {
         MovieType movieType;
         switch (priceCode) {
             case REGULAR:

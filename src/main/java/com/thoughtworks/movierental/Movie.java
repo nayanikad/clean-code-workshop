@@ -6,19 +6,19 @@ public class Movie {
     public static final int NEW_RELEASE = 1;
 
     private String title;
-    private int priceCode;
+    MovieType movieType;
 
     public Movie(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
+        this.movieType = movieTypeFrom(priceCode);
     }
 
     public int getPriceCode() {
-        return priceCode;
+        return movieType.priceCode();
     }
 
     public void setPriceCode(int arg) {
-        priceCode = arg;
+        movieType = movieTypeFrom(arg);
     }
 
     public String getTitle() {
@@ -26,29 +26,29 @@ public class Movie {
     }
 
     double amountFor(int daysRented) {
-        return movieType().amountFor(daysRented);
+        return movieType.amountFor(daysRented);
     }
 
-    private MovieType movieType() {
+    private MovieType movieTypeFrom(int priceCode) {
         MovieType movieType;
         switch (priceCode) {
             case REGULAR:
-                movieType = new RegularMovieType();
+                movieType = new RegularMovieType(Movie.CHILDRENS);
                 break;
             case NEW_RELEASE:
-                movieType = new NewReleaseMovieType();
+                movieType = new NewReleaseMovieType(Movie.NEW_RELEASE);
                 break;
             case CHILDRENS:
-                movieType = new ChildrenMovieType();
+                movieType = new ChildrenMovieType(Movie.CHILDRENS);
                 break;
             default:
-                movieType = new InvalidMovieType();
+                movieType = new InvalidMovieType(priceCode);
                 break;
         }
         return movieType;
     }
 
     int frequentRenterPointsFor(int daysRented) {
-        return movieType().frequentRenterPointsFor(daysRented);
+        return movieType.frequentRenterPointsFor(daysRented);
     }
 }

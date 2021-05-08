@@ -1,11 +1,8 @@
 package com.thoughtworks.movierental;
 
-public class RegularMovieType implements MovieType {
-    private int priceCode;
-
+public class RegularMovieType extends MovieType {
     public RegularMovieType(int priceCode) {
-
-        this.priceCode = priceCode;
+        super(priceCode);
     }
 
     @Override
@@ -15,15 +12,5 @@ public class RegularMovieType implements MovieType {
         if (daysRented > 2)
             amount += (daysRented - 2) * 1.5;
         return amount;
-    }
-
-    @Override
-    public int frequentRenterPointsFor(int daysRented) {
-        return 1;
-    }
-
-    @Override
-    public int priceCode() {
-        return priceCode;
     }
 }

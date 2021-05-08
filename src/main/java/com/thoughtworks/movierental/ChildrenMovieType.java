@@ -1,11 +1,8 @@
 package com.thoughtworks.movierental;
 
-public class ChildrenMovieType implements MovieType{
-    private int priceCode;
-
+public class ChildrenMovieType extends MovieType {
     public ChildrenMovieType(int priceCode) {
-
-        this.priceCode = priceCode;
+        super(priceCode);
     }
 
     public double amountFor(int daysRented) {
@@ -14,15 +11,5 @@ public class ChildrenMovieType implements MovieType{
         if (daysRented > 3)
             amount += (daysRented - 3) * 1.5;
         return amount;
-    }
-
-    @Override
-    public int frequentRenterPointsFor(int daysRented) {
-        return 1;
-    }
-
-    @Override
-    public int priceCode() {
-        return priceCode;
     }
 }

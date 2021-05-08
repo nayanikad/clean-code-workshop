@@ -1,10 +1,9 @@
 package com.thoughtworks.movierental;
 
-public class BluRayMovieType implements MovieType {
-    private int priceCode;
+public class BluRayMovieType extends MovieType {
 
     public BluRayMovieType(int priceCode) {
-        this.priceCode = priceCode;
+        super(priceCode);
     }
 
     @Override
@@ -17,8 +16,4 @@ public class BluRayMovieType implements MovieType {
         return 3;
     }
 
-    @Override
-    public int priceCode() {
-        return priceCode;
-    }
 }

@@ -4,6 +4,7 @@ public class Movie {
     public static final int CHILDRENS = 2;
     public static final int REGULAR = 0;
     public static final int NEW_RELEASE = 1;
+    public static final int BLU_RAY = 3;
 
     private String title;
     MovieType movieType;
@@ -40,6 +41,9 @@ public class Movie {
                 break;
             case CHILDRENS:
                 movieType = new ChildrenMovieType(Movie.CHILDRENS);
+                break;
+            case BLU_RAY:
+                movieType = new BluRayMovieType(Movie.BLU_RAY);
                 break;
             default:
                 movieType = new InvalidMovieType(priceCode);
